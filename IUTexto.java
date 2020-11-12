@@ -1,7 +1,7 @@
 import java.util.Scanner;
 /**
  * Modela el interfaz para interactuar con el usuario
- * @author - 
+ * @author - Xabier Ruiz Melero
  */
 public class IUTexto
 {
@@ -40,9 +40,24 @@ public class IUTexto
      */
     private void hacerSumasOctales()
     {
-        
-        
+        Pantalla.borrarPantalla();
+        System.out.println("Introduce un número: ");
+        int num1 = teclado.nextInt();
+        while (Utilidades.estaEnOctal(num1) != true){
+            System.out.println("El número no está en OCTAL, introduce otro: ");
+            num1 = teclado.nextInt();
+        }
+        System.out.println("Introduce otro número: ");
+        int num2 = teclado.nextInt();
+        while (Utilidades.estaEnOctal(num2) != true){
+            System.out.println("El número no está en OCTAL, introduce otro: ");
+            num2 = teclado.nextInt();
+        }
 
+        if (Utilidades.contarCifras(num1) != Utilidades.contarCifras(num2)){
+            System.out.println("Los números no tienen las mismas cifras");
+            hacerSumasOctales();
+        }
     }
 
     /**
@@ -53,7 +68,6 @@ public class IUTexto
 
     private void dibujarFiguras()
     {
-        
-    }
 
+    }
 }
