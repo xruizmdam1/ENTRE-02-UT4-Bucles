@@ -43,6 +43,7 @@ public class IUTexto
         Pantalla.borrarPantalla();
         System.out.println("Introduce un número: ");
         int num1 = teclado.nextInt();
+        
         while (Utilidades.estaEnOctal(num1) != true){
             System.out.println("El número no está en OCTAL, introduce otro: ");
             num1 = teclado.nextInt();
@@ -58,6 +59,17 @@ public class IUTexto
             System.out.println("Los números no tienen las mismas cifras");
             hacerSumasOctales();
         }
+        
+        if ((Utilidades.contarCifras(num1) == Utilidades.contarCifras(num2)) && 
+             Utilidades.estaEnOctal(num1) == true && Utilidades.estaEnOctal(num2) == true){
+            int calculo = calculadora.sumarEnOctal(num1, num2);
+            System.out.println("El resultado de la operación es: " + calculo);
+        }
+        
+        String pregunta = String.format("Deseas volver a usar la calculadora?");
+        if (pregunta == "S" || pregunta == "s"){
+            hacerSumasOctales();
+        }
     }
 
     /**
@@ -68,6 +80,11 @@ public class IUTexto
 
     private void dibujarFiguras()
     {
-
+        System.out.println("Introduce un valor de altura");
+        int altura = teclado.nextInt();
+        while (altura < 1 && altura > 10){
+            System.out.println("¡Error! Introduce un valor de altura correcto");
+            altura = teclado.nextInt(); 
+        }
     }
 }
