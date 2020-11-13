@@ -7,32 +7,31 @@
  */
 public class CalculadoraOctal
 {
-
     /**
      * sumar dos nºs supuestos en base 8 y con el mismo
      * nº de cifras
      * Asumimos positivos
      */
     public int sumarEnOctal(int n1, int n2) {
-        int cifrasN1 = 0;
-        int cifrasN2 = 0;
-        int sumaCifras = 0;
-        int inverso = 0;
+        int contador = 0;
+        int sumarCifras = 0;
         int resultado = 0;
-        while(n1 != 0 && n2 != 0){
-            cifrasN1 = n1 % 10;
-            cifrasN2 = n2 % 10;
-            sumaCifras += cifrasN1 + cifrasN2;
-            inverso = inverso * 10 + (sumaCifras % 10);
-            cifrasN1 = 0;
-            cifrasN2 = 0;
-            sumaCifras = 0;
+        while (n1 != 0){
+            int cifrasN1 = n1 % 10;
+            int cifrasN2 = n2 % 10;
+            sumarCifras = cifrasN1 + cifrasN2;
+            
+            if (sumarCifras >= 8){
+                sumarCifras -= 8;
+                resultado = resultado + ((int) Math.pow(10,contador) * sumarCifras);
+            }
+            else {
+                resultado += ((int) Math.pow(10,contador) * sumarCifras);
+            }
+            
             n1 /= 10;
             n2 /= 10;
-        }
-        while (sumaCifras == 0 && inverso != 0){
-            resultado = resultado * 10 + (inverso % 10);
-            inverso /= 10;
+            contador++;
         }
         return resultado;
     }
